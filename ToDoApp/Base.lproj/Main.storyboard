@@ -16,20 +16,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfq-yk-XR9">
-                                <rect key="frame" x="138.33333333333334" y="408.66666666666669" width="116.66666666666666" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Go To Detail"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZN0-Rs-JsS">
+                                <rect key="frame" x="0.0" y="155" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="toDetailPageButtonAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ae-qE-Nqc"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="b4l-rO-nGF"/>
                                 </connections>
-                            </button>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Gas-UN-N2d">
+                                <rect key="frame" x="0.0" y="211" width="393" height="558"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toDoCell" id="t22-fN-Bx5" customClass="ToDoCell" customModule="ToDoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t22-fN-Bx5" id="kZz-U2-UIN">
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mission" translatesAutoresizingMaskIntoConstraints="NO" id="pcS-zO-H3k">
+                                                    <rect key="frame" x="16" y="24" width="70" height="40"/>
+                                                    <color key="tintColor" red="0.85586875679999996" green="0.75273913150000005" blue="0.96589463949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="kjf-TL-DhZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eh-mv-s4c">
+                                                    <rect key="frame" x="94" y="10" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSR-Zi-O8b">
+                                                    <rect key="frame" x="94" y="47" width="44" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XSR-Zi-O8b" firstAttribute="bottom" secondItem="kZz-U2-UIN" secondAttribute="bottomMargin" id="2b2-Us-Q9Z"/>
+                                                <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="pcS-zO-H3k" secondAttribute="trailing" constant="8" symbolic="YES" id="6gl-Cz-yD4"/>
+                                                <constraint firstItem="XSR-Zi-O8b" firstAttribute="top" secondItem="6eh-mv-s4c" secondAttribute="bottom" constant="13" id="RLz-78-geN"/>
+                                                <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="XSR-Zi-O8b" secondAttribute="leading" id="S7e-Zv-26A"/>
+                                                <constraint firstItem="pcS-zO-H3k" firstAttribute="leading" secondItem="kZz-U2-UIN" secondAttribute="leading" constant="16" id="UWS-CH-foe"/>
+                                                <constraint firstAttribute="bottom" secondItem="pcS-zO-H3k" secondAttribute="bottom" constant="16" id="WAV-b5-Pc0"/>
+                                                <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="kZz-U2-UIN" secondAttribute="leading" constant="94" id="jRe-Co-jmP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deadlineLabel" destination="XSR-Zi-O8b" id="odV-qR-dMY"/>
+                                            <outlet property="missionImageView" destination="pcS-zO-H3k" id="Azl-BN-iNj"/>
+                                            <outlet property="titleLabel" destination="6eh-mv-s4c" id="seq-Wl-laW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rfq-yk-XR9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="84z-VN-G6i"/>
-                            <constraint firstItem="rfq-yk-XR9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H9A-gS-AxH"/>
+                            <constraint firstItem="ZN0-Rs-JsS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OVX-7p-01v"/>
+                            <constraint firstItem="ZN0-Rs-JsS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hP8-CZ-fWX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gas-UN-N2d" secondAttribute="trailing" id="kOE-m6-NHr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gas-UN-N2d" secondAttribute="bottom" id="o5e-Nv-r0o"/>
+                            <constraint firstItem="Gas-UN-N2d" firstAttribute="top" secondItem="ZN0-Rs-JsS" secondAttribute="bottom" id="vEW-Ov-amS"/>
+                            <constraint firstItem="Gas-UN-N2d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xgO-SE-lZL"/>
+                            <constraint firstItem="ZN0-Rs-JsS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zdU-bs-k08"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do" id="gIA-Eg-Nb9">
@@ -41,6 +94,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="ZN0-Rs-JsS" id="Tx6-aW-eks"/>
+                        <outlet property="toDosTableView" destination="Gas-UN-N2d" id="kPW-JC-NgZ"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="yGu-db-8JQ"/>
                         <segue destination="2SQ-Rx-Aoi" kind="show" identifier="toDetailPage" id="WcZ-Je-Qn4"/>
                     </connections>
@@ -290,6 +345,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mission" width="64" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

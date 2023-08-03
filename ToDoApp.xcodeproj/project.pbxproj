@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896167622A7C193B006EC006 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896167612A7C193B006EC006 /* ToDoCell.swift */; };
 		89CB36CF2A783B42005E2774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36CE2A783B42005E2774 /* AppDelegate.swift */; };
 		89CB36D12A783B42005E2774 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36D02A783B42005E2774 /* SceneDelegate.swift */; };
 		89CB36D32A783B42005E2774 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36D22A783B42005E2774 /* MainPage.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		896167612A7C193B006EC006 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		89CB36CB2A783B42005E2774 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CB36CE2A783B42005E2774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89CB36D02A783B42005E2774 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		896167602A7C1926006EC006 /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				896167612A7C193B006EC006 /* ToDoCell.swift */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
 		89CB36C22A783B42005E2774 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		89CB36E22A783B5F005E2774 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				896167602A7C1926006EC006 /* tableview */,
 				89CB36E52A783B96005E2774 /* views */,
 			);
 			path = ui;
@@ -181,6 +192,7 @@
 			files = (
 				89CB36D32A783B42005E2774 /* MainPage.swift in Sources */,
 				89CB36CF2A783B42005E2774 /* AppDelegate.swift in Sources */,
+				896167622A7C193B006EC006 /* ToDoCell.swift in Sources */,
 				89CB36D12A783B42005E2774 /* SceneDelegate.swift in Sources */,
 				89CB36E72A783BE5005E2774 /* DetailPage.swift in Sources */,
 				89CB36E92A783C15005E2774 /* SavePage.swift in Sources */,
