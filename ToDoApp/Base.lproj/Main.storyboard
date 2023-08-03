@@ -34,13 +34,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mission" translatesAutoresizingMaskIntoConstraints="NO" id="pcS-zO-H3k">
-                                                    <rect key="frame" x="16" y="24" width="70" height="40"/>
-                                                    <color key="tintColor" red="0.85586875679999996" green="0.75273913150000005" blue="0.96589463949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="kjf-TL-DhZ"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eh-mv-s4c">
                                                     <rect key="frame" x="94" y="10" width="48" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -53,20 +46,27 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mission" translatesAutoresizingMaskIntoConstraints="NO" id="osL-cT-0Q8">
+                                                    <rect key="frame" x="24" y="20" width="50" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5Ge-hQ-G9P"/>
+                                                        <constraint firstAttribute="width" constant="50" id="POB-zK-7mL"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="XSR-Zi-O8b" firstAttribute="bottom" secondItem="kZz-U2-UIN" secondAttribute="bottomMargin" id="2b2-Us-Q9Z"/>
-                                                <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="pcS-zO-H3k" secondAttribute="trailing" constant="8" symbolic="YES" id="6gl-Cz-yD4"/>
+                                                <constraint firstItem="osL-cT-0Q8" firstAttribute="centerY" secondItem="kZz-U2-UIN" secondAttribute="centerY" id="Fxe-Jt-eiw"/>
                                                 <constraint firstItem="XSR-Zi-O8b" firstAttribute="top" secondItem="6eh-mv-s4c" secondAttribute="bottom" constant="13" id="RLz-78-geN"/>
+                                                <constraint firstItem="XSR-Zi-O8b" firstAttribute="bottom" secondItem="kZz-U2-UIN" secondAttribute="bottomMargin" id="Rnc-F5-afY"/>
                                                 <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="XSR-Zi-O8b" secondAttribute="leading" id="S7e-Zv-26A"/>
-                                                <constraint firstItem="pcS-zO-H3k" firstAttribute="leading" secondItem="kZz-U2-UIN" secondAttribute="leading" constant="16" id="UWS-CH-foe"/>
-                                                <constraint firstAttribute="bottom" secondItem="pcS-zO-H3k" secondAttribute="bottom" constant="16" id="WAV-b5-Pc0"/>
                                                 <constraint firstItem="6eh-mv-s4c" firstAttribute="leading" secondItem="kZz-U2-UIN" secondAttribute="leading" constant="94" id="jRe-Co-jmP"/>
+                                                <constraint firstItem="osL-cT-0Q8" firstAttribute="centerY" secondItem="kZz-U2-UIN" secondAttribute="centerY" id="uRA-rc-voS"/>
+                                                <constraint firstItem="osL-cT-0Q8" firstAttribute="leading" secondItem="kZz-U2-UIN" secondAttribute="leading" constant="24" id="yIn-46-CaS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="deadlineLabel" destination="XSR-Zi-O8b" id="odV-qR-dMY"/>
-                                            <outlet property="missionImageView" destination="pcS-zO-H3k" id="Azl-BN-iNj"/>
+                                            <outlet property="missionImageView" destination="osL-cT-0Q8" id="cN3-X6-ae7"/>
                                             <outlet property="titleLabel" destination="6eh-mv-s4c" id="seq-Wl-laW"/>
                                         </connections>
                                     </tableViewCell>
@@ -87,7 +87,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="To Do" id="gIA-Eg-Nb9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KdA-gx-zL9">
-                            <color key="tintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.92156863209999995" green="0.43137252329999998" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="YnL-ZR-9af" kind="show" identifier="toSavePage" id="uH5-po-lih"/>
                             </connections>
@@ -152,7 +152,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Update">
                                     <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
-                                    <color key="baseBackgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.92156863209999995" green="0.43137252329999998" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addButtonAct:" destination="YnL-ZR-9af" eventType="touchUpInside" id="ZUt-aH-D3l"/>
@@ -262,7 +262,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" image="plus" catalog="system" title="Add">
                                     <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
-                                    <color key="baseBackgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.92156863209999995" green="0.43137252329999998" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addButtonAct:" destination="YnL-ZR-9af" eventType="touchUpInside" id="bAu-HU-ZK6"/>
