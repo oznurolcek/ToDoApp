@@ -17,6 +17,11 @@
 		89CB36E72A783BE5005E2774 /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36E62A783BE5005E2774 /* DetailPage.swift */; };
 		89CB36E92A783C15005E2774 /* SavePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36E82A783C15005E2774 /* SavePage.swift */; };
 		89CB36EB2A785511005E2774 /* ToDos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB36EA2A785511005E2774 /* ToDos.swift */; };
+		89D957DD2A8580B300721F23 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D957DC2A8580B300721F23 /* MainPageViewModel.swift */; };
+		89D957DF2A8580C300721F23 /* DetailPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D957DE2A8580C300721F23 /* DetailPageViewModel.swift */; };
+		89D957E12A85810D00721F23 /* SavePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D957E02A85810D00721F23 /* SavePageViewModel.swift */; };
+		89D957E42A85819A00721F23 /* ToDosDaoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D957E32A85819A00721F23 /* ToDosDaoRepository.swift */; };
+		89D957E72A8587A000721F23 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89D957E62A8587A000721F23 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,10 @@
 		89CB36E62A783BE5005E2774 /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		89CB36E82A783C15005E2774 /* SavePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePage.swift; sourceTree = "<group>"; };
 		89CB36EA2A785511005E2774 /* ToDos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDos.swift; sourceTree = "<group>"; };
+		89D957DC2A8580B300721F23 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		89D957DE2A8580C300721F23 /* DetailPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewModel.swift; sourceTree = "<group>"; };
+		89D957E02A85810D00721F23 /* SavePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePageViewModel.swift; sourceTree = "<group>"; };
+		89D957E32A85819A00721F23 /* ToDosDaoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosDaoRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D957E72A8587A000721F23 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +97,7 @@
 		89CB36E22A783B5F005E2774 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				89D957DB2A85809F00721F23 /* viewmodel */,
 				896167602A7C1926006EC006 /* tableview */,
 				89CB36E52A783B96005E2774 /* views */,
 			);
@@ -96,6 +107,7 @@
 		89CB36E32A783B67005E2774 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				89D957E22A85818400721F23 /* repo */,
 				89CB36E42A783B8D005E2774 /* entity */,
 			);
 			path = data;
@@ -119,6 +131,24 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		89D957DB2A85809F00721F23 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				89D957DC2A8580B300721F23 /* MainPageViewModel.swift */,
+				89D957DE2A8580C300721F23 /* DetailPageViewModel.swift */,
+				89D957E02A85810D00721F23 /* SavePageViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		89D957E22A85818400721F23 /* repo */ = {
+			isa = PBXGroup;
+			children = (
+				89D957E32A85819A00721F23 /* ToDosDaoRepository.swift */,
+			);
+			path = repo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +165,9 @@
 			dependencies = (
 			);
 			name = ToDoApp;
+			packageProductDependencies = (
+				89D957E62A8587A000721F23 /* RxSwift */,
+			);
 			productName = ToDoApp;
 			productReference = 89CB36CB2A783B42005E2774 /* ToDoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +196,9 @@
 				Base,
 			);
 			mainGroup = 89CB36C22A783B42005E2774;
+			packageReferences = (
+				89D957E52A8587A000721F23 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 89CB36CC2A783B42005E2774 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -190,12 +226,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D957DD2A8580B300721F23 /* MainPageViewModel.swift in Sources */,
 				89CB36D32A783B42005E2774 /* MainPage.swift in Sources */,
 				89CB36CF2A783B42005E2774 /* AppDelegate.swift in Sources */,
+				89D957DF2A8580C300721F23 /* DetailPageViewModel.swift in Sources */,
 				896167622A7C193B006EC006 /* ToDoCell.swift in Sources */,
+				89D957E42A85819A00721F23 /* ToDosDaoRepository.swift in Sources */,
 				89CB36D12A783B42005E2774 /* SceneDelegate.swift in Sources */,
 				89CB36E72A783BE5005E2774 /* DetailPage.swift in Sources */,
 				89CB36E92A783C15005E2774 /* SavePage.swift in Sources */,
+				89D957E12A85810D00721F23 /* SavePageViewModel.swift in Sources */,
 				89CB36EB2A785511005E2774 /* ToDos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		89D957E52A8587A000721F23 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89D957E62A8587A000721F23 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89D957E52A8587A000721F23 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 89CB36C32A783B42005E2774 /* Project object */;
 }

@@ -13,23 +13,16 @@ class SavePage: UIViewController {
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var deadlineField: UITextField!
     
+    var viewModel = SavePageViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
- 
         
     }
     
     @IBAction func addButtonAct(_ sender: Any) {
         if let title = titleField.text, let description = descriptionField.text, let deadline = deadlineField.text {
-            add(title: title, description: description, deadline: deadline)
+            viewModel.add(title: title, description: description, deadline: deadline)
         }
     }
-    
-    func add(title: String, description: String, deadline: String) {
-        print("Title: \(title), Description: \(description), Deadline: \(deadline)")
-    }
-    
-
-
 }

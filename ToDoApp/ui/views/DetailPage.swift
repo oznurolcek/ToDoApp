@@ -15,6 +15,8 @@ class DetailPage: UIViewController {
     
     var todo: ToDos?
     
+    var viewModel = DetailPageViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,18 +25,12 @@ class DetailPage: UIViewController {
             descriptionField.text = td.description
             deadlineField.text = td.deadline
         }
-
-
     }
     
     @IBAction func updateButtonAct(_ sender: Any) {
         if let id = todo?.id, let title = titleField.text, let description = descriptionField.text, let deadline = deadlineField.text {
-            update(id: id, title: title, description: description, deadline: deadline)
+            viewModel.update(id: id, title: title, description: description, deadline: deadline)
         }
-    }
-    
-    func update(id: Int, title: String, description: String, deadline: String) {
-        print("Güncellendi -> ID: \(id) - Title: \(title) - Description \(description) - Deadline: \(deadline)")
     }
 
 }

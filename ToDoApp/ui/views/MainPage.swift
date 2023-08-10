@@ -9,10 +9,12 @@ import UIKit
 
 class MainPage: UIViewController {
     
-    var todos = [ToDos]()
-
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var toDosTableView: UITableView!
+    
+    var todos = [ToDos]()
+
+    var viewModel = MainPageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +24,15 @@ class MainPage: UIViewController {
         toDosTableView.delegate = self
         toDosTableView.dataSource = self
         
-        todos = [
-            ToDos(id: 1, title: "Ödev", description: "Ödevi bitir", deadline: "2 Ağustos, Çarşamba"),
-            ToDos(id: 2, title: "Doktor", description: "Doktor randevu", deadline: "10 Ağustos, Perşembe"),
-            ToDos(id: 3, title: "Toplantı", description: "İş toplantısı", deadline: "25 Ağustos, Cuma"),
-            ToDos(id: 4, title: "Sipariş", description: "Sipariş ver", deadline: "12 Ağustos, Cumartesi"),
-            ToDos(id: 5, title: "Kitap", description: "Kitap oku", deadline: "15 Ağustos, Salı"),
-            ToDos(id: 6, title: "Buluşma", description: "Arkadaşlarla buluş", deadline: "9 Ağustos, Çarşamba")
-            
-            ]
+        _ = viewModel.toDoList.subscribe(onNext: { todos in
+            self.todos = todos
+            self.toDosTableView.reloadData()
+        })
               
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.uploadToDos()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,27 +44,11 @@ class MainPage: UIViewController {
             }
         
         }
-    
-    func alertDialog(title : String, message : String) {
-        let alertMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        alertMessage.addAction(cancelButton)
-            
-        let yesButton = UIAlertAction(title: "OK", style: .default) {
-            action in
-            print("Deleted To Do")
-        }
-            alertMessage.addAction(yesButton)
-            self.present(alertMessage, animated: true)
-
-        }
-    
 }
 
 extension MainPage: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        viewModel.search(searchText: searchText)
     }
 }
 
@@ -89,7 +74,15 @@ extension MainPage: UITableViewDelegate, UITableViewDataSource {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
             contextualAction, view, bool in
             let todo = self.todos[indexPath.row]
-            self.alertDialog(title: "Delete", message: "Do you want to delete \(todo.title!)")
+            let alert = UIAlertController(title: "Delete", message: "Do you want delete \(todo.title!)?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive) {
+                action in
+                self.viewModel.delete(id: todo.id!)
+            }
+            alert.addAction(yesAction)
+            self.present(alert, animated: true)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
