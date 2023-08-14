@@ -11,34 +11,90 @@ import RxSwift
 class ToDosDaoRepository {
     var toDoList = BehaviorSubject<[ToDos]>(value: [ToDos]())
     
+    let database:FMDatabase?
+    
+    init() {
+        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let databaseURL = URL(fileURLWithPath: filePath).appendingPathComponent("todos.sqlite")
+        database = FMDatabase(path: databaseURL.path)
+    }
+    
     func add(title: String, description: String, deadline: String) {
-        print("Title: \(title), Description: \(description), Deadline: \(deadline)")
+        database?.open()
+        do {
+            try database!.executeUpdate("INSERT INTO todos (title, description, deadline) VALUES (?, ?, ?)", values: [title, description, deadline])
+        } catch {
+            print(error.localizedDescription)
+        }
+        database?.close()
     }
     
     func update(id: Int, title: String, description: String, deadline: String) {
-        print("Updated -> ID: \(id) - Title: \(title) - Description \(description) - Deadline: \(deadline)")
+        database?.open()
+        do {
+            try database!.executeUpdate("UPDATE todos SET title = ?, description = ?, deadline = ? WHERE id = ?", values: [title, description, deadline, id])
+        } catch {
+            print(error.localizedDescription)
+        }
+        database?.close()
     }
     
     func delete(id: Int) {
-        print("Deleted To Do: \(id)")
+        database?.open()
+        do {
+            try database!.executeUpdate("DELETE FROM todos WHERE id = ?", values: [id])
+        } catch {
+            print(error.localizedDescription)
+        }
+        database?.close()
     }
     
     func search(searchText: String) {
-        print("Search To Do: \(searchText)")
+        database?.open()
+        
+        var todos = [ToDos]()
+        
+        do {
+            let result = try database!.executeQuery("SELECT * FROM todos WHERE title LIKE '%\(searchText)%'", values: nil)
+            
+            while result.next() {
+                let id = Int(result.string(forColumn: "id"))!
+                let title = result.string(forColumn: "title")!
+                let description = result.string(forColumn: "description")!
+                let deadline = result.string(forColumn: "deadline")!
+                
+                let todo = ToDos(id: id, title: title, description: description, deadline: deadline)
+                todos.append(todo)
+            }
+            toDoList.onNext(todos)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        database?.close()
     }
     
     func uploadToDos() {
+        database?.open()
+        
         var todos = [ToDos]()
         
-        todos = [
-            ToDos(id: 1, title: "Ödev", description: "Ödevi bitir", deadline: "2 Ağustos, Çarşamba"),
-            ToDos(id: 2, title: "Doktor", description: "Doktor randevu", deadline: "10 Ağustos, Perşembe"),
-            ToDos(id: 3, title: "Toplantı", description: "İş toplantısı", deadline: "25 Ağustos, Cuma"),
-            ToDos(id: 4, title: "Sipariş", description: "Sipariş ver", deadline: "12 Ağustos, Cumartesi"),
-            ToDos(id: 5, title: "Kitap", description: "Kitap oku", deadline: "15 Ağustos, Salı"),
-            ToDos(id: 6, title: "Buluşma", description: "Arkadaşlarla buluş", deadline: "9 Ağustos, Çarşamba")
-        ]
-        
-        toDoList.onNext(todos)
+        do {
+            let result = try database!.executeQuery("SELECT * FROM todos", values: nil)
+            
+            while result.next() {
+                let id = Int(result.string(forColumn: "id"))!
+                let title = result.string(forColumn: "title")!
+                let description = result.string(forColumn: "description")!
+                let deadline = result.string(forColumn: "deadline")!
+                
+                let todo = ToDos(id: id, title: title, description: description, deadline: deadline)
+                todos.append(todo)
+            }
+            toDoList.onNext(todos)
+        } catch {
+            print(error.localizedDescription)
+        }
+        database?.close()
     }
 }

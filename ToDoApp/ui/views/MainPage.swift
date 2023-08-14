@@ -19,6 +19,8 @@ class MainPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 248.0/255.0, green: 151.0/255.0, blue: 159.0/255.0, alpha: 1.0)]
+        
         searchBar.delegate = self
         
         toDosTableView.delegate = self

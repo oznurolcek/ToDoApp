@@ -13,6 +13,7 @@ class MainPageViewModel {
     var toDoList = BehaviorSubject<[ToDos]>(value: [ToDos]())
     
     init() {
+        copyDatabase()
         toDoList = tdrepo.toDoList
     }
     
@@ -27,5 +28,24 @@ class MainPageViewModel {
     
     func uploadToDos() {
         tdrepo.uploadToDos()
+    }
+    
+    func copyDatabase() {
+        let bundlePath = Bundle.main.path(forResource: "todos", ofType: ".sqlite")
+        
+        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let databaseURL = URL(fileURLWithPath: filePath).appendingPathComponent("todos.sqlite")
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: databaseURL.path()) {
+            print("Database already exist.")
+        } else {
+            do {
+                try fileManager.copyItem(atPath: bundlePath!, toPath: databaseURL.path)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }

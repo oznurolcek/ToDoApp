@@ -30,6 +30,7 @@ class DetailPage: UIViewController {
     @IBAction func updateButtonAct(_ sender: Any) {
         if let id = todo?.id, let title = titleField.text, let description = descriptionField.text, let deadline = deadlineField.text {
             viewModel.update(id: id, title: title, description: description, deadline: deadline)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 

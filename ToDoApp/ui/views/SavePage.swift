@@ -23,6 +23,7 @@ class SavePage: UIViewController {
     @IBAction func addButtonAct(_ sender: Any) {
         if let title = titleField.text, let description = descriptionField.text, let deadline = deadlineField.text {
             viewModel.add(title: title, description: description, deadline: deadline)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
