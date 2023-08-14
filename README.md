@@ -7,12 +7,14 @@ UP School &amp; Akbank IOS Bootcamp Homework - 5
 - Add todo
 - Delete todo
 - Update todo
+- Todo search
 
 ## What i used in the project:
 
-- UITableView
 - MVVM Pattern
 - SQLite
+- UITableView
+- UISearchBar
 
 ## App Screenshots
 
