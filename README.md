@@ -9,7 +9,7 @@ UP School &amp; Akbank IOS Bootcamp Homework - 5
 - Update todo
 - Todo search
 
-## What i used in the project:
+## What i used in the project
 
 - MVVM Pattern
 - SQLite
